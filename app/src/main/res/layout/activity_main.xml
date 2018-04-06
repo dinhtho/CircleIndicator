@@ -10,10 +10,6 @@
        android:id="@+id/viewPager"
        android:layout_width="match_parent"
        android:layout_height="200dp"></android.support.v4.view.ViewPager>
-    <TextView
-        android:text="hello"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
     <com.rd.PageIndicatorView
         android:id="@+id/pageIndicatorView"
         android:layout_width="wrap_content"

@@ -22,29 +22,20 @@ public class MainActivity extends AppCompatActivity {
 
         ViewPager viewPager = findViewById(R.id.viewPager);
         List<ImageFragment> fragmentList = new ArrayList<>();
+
         for (int i = 0; i < 10; i++) {
-            fragmentList.add(ImageFragment.newInstance(R.drawable.ic_launcher_background));
+            Bundle bundle = new Bundle();
+            bundle.putInt("index", i);
+            ImageFragment imageFragment = ImageFragment.newInstance(R.drawable.ic_launcher_background);
+            imageFragment.setArguments(bundle);
+            fragmentList.add(imageFragment);
         }
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), fragmentList);
         viewPager.setAdapter(viewPagerAdapter);
+        viewPager.setCurrentItem(1);
 
         setPageIndicator(viewPager);
-        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                Log.i(TAG, "onPageScrolled: " + position);
-            }
 
-            @Override
-            public void onPageSelected(int position) {
-                Log.i(TAG, "onPageSelected: " + position);
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-                Log.i(TAG, "onPageScrollStateChanged: " + state);
-            }
-        });
 
     }
 
@@ -69,6 +60,25 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
+    private void ViewPagerListener(ViewPager viewPager){
+        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                Log.i(TAG, "onPageScrolled: " + position);
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                Log.i(TAG, "onPageSelected: " + position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+                Log.i(TAG, "onPageScrollStateChanged: " + state);
+            }
+        });
+
     }
 
 }
